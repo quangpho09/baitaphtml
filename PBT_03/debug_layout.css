@@ -1,0 +1,38 @@
+
+.container{
+    width:960px;
+    margin:20px auto;
+    overflow:hidden;
+}
+
+.broken .sidebar{
+    width:300px;
+    padding:20px;
+    border:1px solid #ccc;
+    float:left;
+}
+
+.broken .content{
+    width:660px;
+    padding:30px;
+    border:1px solid #ccc;
+    float:left;
+}
+
+.fixed *{
+    box-sizing:border-box;
+}
+
+.fixed .sidebar{
+    width:300px;
+    padding:20px;
+    border:1px solid #ccc;
+    float:left;
+}
+
+.fixed .content{
+    width:660px;
+    padding:30px;
+    border:1px solid #ccc;
+    float:left;
+}
