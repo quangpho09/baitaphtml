@@ -1,94 +1,144 @@
-
 <!DOCTYPE html>
 <html lang="vi">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Quản Lý Sinh Viên</title>
+<title>Quản Lý Công Việc</title>
 <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
 <div class="container">
 
-<div class="header">
-    <h1>🎓 QUẢN LÝ CÔNG VIỆC</h1>
-    <h2>Dashboard</h2>
-</div>
-
-<div class="top-bar">
-    <button class="btn btn-primary" id="openModalBtn">
-        + Thêm Sinh Viên
-    </button>
-</div>
-
-<div class="stats">
-
-    <div class="card blue">
-        <h3>Tổng Sinh Viên</h3>
-        <p id="totalStudents">0</p>
+    <!-- HEADER -->
+    <div class="header">
+        <h1>📋 QUẢN LÝ CÔNG VIỆC</h1>
+        <h2>Task Dashboard</h2>
     </div>
 
-    <div class="card green">
-        <h3>Điểm Trung Bình</h3>
-        <p id="averageScore">0</p>
+    <!-- BUTTON -->
+    <div class="top-bar">
+        <button class="btn btn-primary" id="openModalBtn">
+            + Thêm Công Việc
+        </button>
     </div>
 
+    <!-- THỐNG KÊ -->
+    <div class="stats">
+
+        <div class="card blue">
+            <h3>Tổng Công Việc</h3>
+            <p id="totalTasks">0</p>
+        </div>
+
+        <div class="card green">
+            <h3>Đã Hoàn Thành</h3>
+            <p id="completedTasks">0</p>
+        </div>
+
+        <div class="card orange">
+            <h3>Chưa Hoàn Thành</h3>
+            <p id="pendingTasks">0</p>
+        </div>
+
+    </div>
+
+    <!-- THÔNG BÁO -->
+    <div id="messageBox"></div>
+
+    <!-- DANH SÁCH -->
+    <div id="taskContainer"></div>
+
 </div>
 
-<div id="messageBox"></div>
-
-<table>
-    <thead>
-        <tr>
-            <th>Mã SV</th>
-            <th>Họ Tên</th>
-            <th>Ngày Sinh</th>
-            <th>Lớp</th>
-            <th>Điểm</th>
-            <th>Email</th>
-            <th>Hành Động</th>
-        </tr>
-    </thead>
-
-    <tbody id="taskTableBody"></tbody>
-</table>
-
-</div>
-
+<!-- MODAL -->
 <div class="modal hidden" id="taskModal">
 
-<div class="modal-content">
+    <div class="modal-content">
 
-<div class="modal-header">
-    <h2 id="modalTitle">Thêm Sinh Viên</h2>
-    <button class="btn btn-danger" id="closeModalBtn">X</button>
-</div>
+        <div class="modal-header">
+            <h2 id="modalTitle">Thêm Công Việc</h2>
 
-<form id="taskForm">
+            <button class="btn btn-danger"
+                id="closeModalBtn">
+                X
+            </button>
+        </div>
 
-<input type="text" id="taskId" placeholder="Nhập mã sinh viên">
-<small class="error" id="taskIdError"></small>
+        <!-- FORM -->
+        <form id="taskForm">
 
-<input type="text" id="fullName" placeholder="Nhập họ tên">
-<small class="error" id="fullNameError"></small>
+            <!-- TIÊU ĐỀ -->
+            <input
+                type="text"
+                id="title"
+                placeholder="Nhập tiêu đề công việc"
+                required
+            >
 
-<input type="date" id="birthDate">
+            <!-- MÔ TẢ -->
+            <textarea
+                id="description"
+                placeholder="Nhập mô tả ngắn">
+            </textarea>
 
-<input type="text" id="className" placeholder="Nhập lớp">
+            <!-- DEADLINE -->
+            <input
+                type="date"
+                id="deadline"
+            >
 
-<input type="number" id="score" placeholder="Nhập điểm">
+            <!-- PRIORITY -->
+            <select id="priority">
 
-<input type="email" id="email" placeholder="Nhập email">
+                <option value="Thấp">
+                    Thấp
+                </option>
 
-<div class="form-buttons">
-<button type="submit" class="btn btn-primary">Lưu</button>
-<button type="button" class="btn btn-danger" id="cancelBtn">Hủy</button>
-</div>
+                <option value="Trung Bình">
+                    Trung Bình
+                </option>
 
-</form>
+                <option value="Cao">
+                    Cao
+                </option>
 
-</div>
+            </select>
+
+            <!-- TRẠNG THÁI -->
+            <label>
+
+                <input
+                    type="checkbox"
+                    id="completed"
+                >
+
+                Hoàn Thành
+
+            </label>
+
+            <!-- BUTTON -->
+            <div class="form-buttons">
+
+                <button
+                    type="submit"
+                    class="btn btn-primary">
+                    Lưu
+                </button>
+
+                <button
+                    type="button"
+                    class="btn btn-danger"
+                    id="cancelBtn">
+                    Hủy
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
 
 </div>
 
