@@ -1,0 +1,419 @@
+// =====================================================
+// _components.scss — PBT05 Bài B3
+// Tất cả component styles: header, cards, buttons...
+// =====================================================
+
+@use 'variables' as *;
+@use 'mixins' as *;
+
+// ===== HEADER =====
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(13, 13, 20, 0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid $border-color;
+
+    &-inner {
+        @include flex-center(row);
+        justify-content: space-between;
+        padding: $spacing-sm $spacing-md;
+        height: $header-height;
+        max-width: $container-max;
+        margin: 0 auto;
+
+        @include respond-to(tablet) {
+            padding: $spacing-sm $spacing-xl;
+        }
+    }
+
+    &-actions {
+        display: flex;
+        align-items: center;
+        gap: $spacing-sm;
+    }
+}
+
+// ===== LOGO =====
+.logo {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+    font-family: $font-primary;
+    font-weight: $font-weight-black;
+    font-size: 20px;
+
+    &-mark { color: $primary-color; font-size: 24px; }
+    &-text { color: $white; }
+}
+
+// ===== NAVIGATION =====
+.nav-desktop {
+    display: none;
+
+    @include respond-to(tablet) {
+        display: flex;
+        align-items: center;
+        gap: $spacing-xl;
+    }
+
+    a {
+        font-size: $font-size-sm;
+        font-weight: $font-weight-medium;
+        color: $text-muted;
+        position: relative;
+        transition: $transition;
+
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: $primary-color;
+            transition: width 0.3s ease;
+        }
+
+        &:hover {
+            color: $primary-color;
+
+            &::after { width: 100%; }
+        }
+    }
+}
+
+// ===== HAMBURGER =====
+.hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: $spacing-xs;
+    width: 36px;
+    height: 36px;
+
+    @include respond-to(tablet) { display: none; }
+
+    span {
+        display: block;
+        width: 22px;
+        height: 2px;
+        background: $text-color;
+        border-radius: 2px;
+        transition: $transition;
+        transform-origin: center;
+    }
+
+    &.open {
+        span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+        span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    }
+}
+
+// ===== MOBILE NAV =====
+.nav-mobile {
+    display: flex;
+    flex-direction: column;
+    background: $surface-color;
+    border-top: 1px solid $border-color;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease;
+
+    @include respond-to(tablet) { display: none !important; }
+
+    &.open { max-height: 300px; }
+
+    a {
+        padding: $spacing-md $spacing-lg;
+        font-size: $font-size-base;
+        font-weight: $font-weight-medium;
+        border-bottom: 1px solid $border-color;
+        color: $text-color;
+        transition: $transition;
+
+        &:hover {
+            color: $primary-color;
+            padding-left: $spacing-xl;
+        }
+    }
+}
+
+// ===== PRODUCT CARD =====
+.product-card {
+    background: $surface-color;
+    border: 1px solid $border-color;
+    border-radius: $radius-md;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+
+    &:hover {
+        transform: translateY(-8px);
+        @include card-shadow('primary');
+        border-color: $primary-color;
+
+        .card-image { transform: scale(1.08); }
+    }
+
+    // Nested: card image wrapper
+    .card-image-wrap {
+        position: relative;
+        overflow: hidden;
+        aspect-ratio: 4/3;
+    }
+
+    // Nested: image với zoom
+    .card-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.4s ease;
+    }
+
+    // Nested: card body
+    .card-body {
+        padding: $spacing-md;
+    }
+
+    // Nested: card title
+    .card-title {
+        font-family: $font-primary;
+        font-size: $font-size-sm;
+        font-weight: $font-weight-semibold;
+        color: $white;
+        margin-bottom: $spacing-sm;
+        @include truncate(2);
+
+        @include respond-to(desktop) {
+            font-size: 14px;
+        }
+    }
+
+    // Nested: brand tag
+    .card-brand {
+        font-size: $font-size-xs;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: $primary-color;
+        font-weight: $font-weight-bold;
+        margin-bottom: $spacing-xs;
+    }
+
+    // Nested: rating
+    .card-rating {
+        font-size: 12px;
+        color: #f59e0b;
+        margin-bottom: $spacing-sm;
+
+        span { color: $text-muted; }
+    }
+
+    // Nested: price block
+    .card-price {
+        display: flex;
+        align-items: baseline;
+        gap: $spacing-sm;
+        margin-bottom: $spacing-md;
+        flex-wrap: wrap;
+    }
+
+    // Parent selector — featured variant
+    &.featured {
+        border-color: $primary-color;
+        @include card-shadow('primary');
+    }
+
+    // Parent selector — on sale
+    &.on-sale .card-image-wrap::before {
+        content: 'SALE';
+        position: absolute;
+        top: $spacing-sm;
+        left: $spacing-sm;
+        background: $secondary-color;
+        color: $white;
+        font-size: $font-size-xs;
+        font-weight: $font-weight-bold;
+        padding: 2px 8px;
+        border-radius: $radius-sm;
+        z-index: 1;
+    }
+}
+
+// ===== PRICE =====
+.price-current {
+    font-size: $font-size-md;
+    font-weight: $font-weight-bold;
+    color: $primary-color;
+    font-family: $font-primary;
+}
+
+.price-old {
+    font-size: 12px;
+    color: $text-muted;
+    text-decoration: line-through;
+}
+
+// ===== BADGE =====
+.badge {
+    position: absolute;
+    top: $spacing-sm;
+    left: $spacing-sm;
+    padding: 2px 8px;
+    border-radius: $radius-sm;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-bold;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    z-index: 1;
+
+    &-sale { background: $secondary-color; color: $white; }
+    &-new  { background: $accent-green; color: $white; }
+}
+
+// ===== BUTTONS =====
+.btn-buy {
+    @include button-base;
+    width: 100%;
+    background: $primary-color;
+    color: $bg-color;
+    border-color: $primary-color;
+
+    &:hover {
+        background: transparent;
+        color: $primary-color;
+        transform: scale(1.05);
+        box-shadow: 0 4px 20px rgba(200, 169, 126, 0.3);
+    }
+}
+
+.btn-filter-apply {
+    @include button-base;
+    width: 100%;
+    background: $primary-color;
+    color: $bg-color;
+
+    &:hover { background: $primary-dark; }
+}
+
+// ===== SIDEBAR =====
+.sidebar {
+    display: none;
+
+    @include respond-to(desktop) {
+        display: block;
+        position: sticky;
+        top: calc(#{$header-height} + #{$spacing-md});
+        background: $surface-color;
+        border: 1px solid $border-color;
+        border-radius: $radius-md;
+        padding: $spacing-lg;
+    }
+
+    &-title {
+        font-family: $font-primary;
+        font-size: $font-size-md;
+        font-weight: $font-weight-bold;
+        color: $white;
+        margin-bottom: $spacing-lg;
+        padding-bottom: $spacing-sm;
+        border-bottom: 2px solid $primary-color;
+    }
+}
+
+.filter-group { margin-bottom: $spacing-lg; }
+
+.filter-label {
+    font-size: $font-size-xs;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: $primary-color;
+    font-weight: $font-weight-semibold;
+    margin-bottom: $spacing-sm;
+}
+
+.filter-list {
+    list-style: none;
+
+    li { margin-bottom: $spacing-xs; }
+
+    label {
+        display: flex;
+        align-items: center;
+        gap: $spacing-sm;
+        cursor: pointer;
+        padding: 4px;
+        border-radius: $radius-sm;
+        font-size: $font-size-sm;
+        color: $text-muted;
+        transition: $transition;
+
+        &:hover {
+            background: $surface-2;
+            color: $text-color;
+        }
+    }
+
+    input { accent-color: $primary-color; }
+}
+
+// ===== FOOTER =====
+.footer {
+    background: $surface-color;
+    border-top: 1px solid $border-color;
+    margin-top: $spacing-2xl;
+
+    &-inner {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: $spacing-lg;
+        padding: $spacing-xl $spacing-md;
+        max-width: $container-max;
+        margin: 0 auto;
+
+        @include respond-to(tablet) {
+            grid-template-columns: repeat(2, 1fr);
+            padding: $spacing-xl $spacing-lg;
+        }
+
+        @include respond-to(desktop) {
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            padding: $spacing-2xl;
+        }
+    }
+
+    &-col {
+        h4 {
+            font-family: $font-primary;
+            font-size: $font-size-sm;
+            font-weight: $font-weight-bold;
+            color: $primary-color;
+            margin-bottom: $spacing-sm;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        p, li {
+            font-size: $font-size-sm;
+            color: $text-muted;
+            margin-bottom: $spacing-xs;
+        }
+
+        a {
+            &:hover { color: $primary-color; }
+        }
+    }
+
+    &-bottom {
+        border-top: 1px solid $border-color;
+        text-align: center;
+        padding: $spacing-md;
+        font-size: 12px;
+        color: $text-muted;
+    }
+}

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Animations — PBT05 B2</title>
+    <link rel="stylesheet" href="animations.css">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="anim-header">
+        <h1>CSS Transitions & Animations</h1>
+        <p>PBT05 — Bài B2: 5 hiệu ứng bắt buộc</p>
+    </header>
+
+    <!-- ===================================================
+         EFFECT 1: Card Hover Effect
+         translateY(-8px) + box-shadow + transition 0.3s
+         =================================================== -->
+    <section class="demo-section">
+        <div class="section-label">Hiệu ứng 1 — Card Hover</div>
+        <h2 class="demo-title">Hover vào card để xem hiệu ứng</h2>
+        <div class="card-demo-grid">
+
+            <div class="product-card">
+                <div class="card-img-wrap">
+                    <img src="https://placehold.co/400x280/1a1a2e/c8a97e?text=iPhone+15" alt="Product" class="card-img">
+                </div>
+                <div class="card-info">
+                    <span class="card-tag">Apple</span>
+                    <h3 class="card-name">iPhone 15 Pro 256GB</h3>
+                    <p class="card-price">28.990.000đ</p>
+                    <!-- Effect 2: Buy button -->
+                    <button class="btn-buy">Mua ngay</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="card-img-wrap">
+                    <img src="https://placehold.co/400x280/0f3460/e94560?text=Samsung+S24" alt="Product" class="card-img">
+                </div>
+                <div class="card-info">
+                    <span class="card-tag">Samsung</span>
+                    <h3 class="card-name">Galaxy S24 Ultra 512GB</h3>
+                    <p class="card-price">31.490.000đ</p>
+                    <button class="btn-buy">Mua ngay</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <div class="card-img-wrap">
+                    <img src="https://placehold.co/400x280/16213e/53d8fb?text=MacBook+Air+M3" alt="Product" class="card-img">
+                </div>
+                <div class="card-info">
+                    <span class="card-tag">Apple</span>
+                    <h3 class="card-name">MacBook Air M3 16GB</h3>
+                    <p class="card-price">32.990.000đ</p>
+                    <button class="btn-buy">Mua ngay</button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ===================================================
+         EFFECT 3: Image Zoom on Hover
+         overflow:hidden + transform:scale(1.1)
+         =================================================== -->
+    <section class="demo-section">
+        <div class="section-label">Hiệu ứng 3 — Image Zoom</div>
+        <h2 class="demo-title">Hover vào ảnh để zoom</h2>
+        <div class="image-zoom-grid">
+
+            <figure class="zoom-wrapper">
+                <img src="https://placehold.co/500x360/533483/e94560?text=Hover+to+Zoom" alt="Zoom 1" class="zoom-img">
+                <figcaption>iPad Pro M4</figcaption>
+            </figure>
+
+            <figure class="zoom-wrapper">
+                <img src="https://placehold.co/500x360/e94560/fff?text=Zoom+Effect" alt="Zoom 2" class="zoom-img">
+                <figcaption>AirPods Pro 2</figcaption>
+            </figure>
+
+            <figure class="zoom-wrapper">
+                <img src="https://placehold.co/500x360/0f3460/53d8fb?text=Scale+1.1" alt="Zoom 3" class="zoom-img">
+                <figcaption>Galaxy Watch 7</figcaption>
+            </figure>
+
+        </div>
+    </section>
+
+    <!-- ===================================================
+         EFFECT 4: Loading Spinner
+         @keyframes spin — 1s linear infinite
+         =================================================== -->
+    <section class="demo-section">
+        <div class="section-label">Hiệu ứng 4 — Loading Spinner</div>
+        <h2 class="demo-title">Loading spinners — @keyframes spin</h2>
+        <div class="spinner-demo-wrap">
+
+            <div class="spinner-container">
+                <div class="spinner spinner-primary"></div>
+                <p>Primary</p>
+            </div>
+
+            <div class="spinner-container">
+                <div class="spinner spinner-accent"></div>
+                <p>Accent</p>
+            </div>
+
+            <div class="spinner-container">
+                <div class="spinner spinner-dual"></div>
+                <p>Dual color</p>
+            </div>
+
+            <div class="spinner-container">
+                <div class="spinner spinner-dots">
+                    <div></div><div></div><div></div>
+                </div>
+                <p>Dots</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ===================================================
+         EFFECT 5: Fade-in on Scroll (CSS only)
+         @keyframes fadeIn — opacity:0 + translateY(20px) → opacity:1
+         =================================================== -->
+    <section class="demo-section">
+        <div class="section-label">Hiệu ứng 5 — Fade-in Animation</div>
+        <h2 class="demo-title">Fade-in khi tải trang — @keyframes fadeIn</h2>
+        <p class="demo-subtitle">Các card xuất hiện tuần tự với animation-delay</p>
+
+        <div class="fade-grid">
+            <div class="fade-card" style="--delay: 0s">
+                <div class="fade-icon">📱</div>
+                <h3>Điện thoại</h3>
+                <p>Hàng chính hãng, bảo hành 12 tháng</p>
+            </div>
+            <div class="fade-card" style="--delay: 0.1s">
+                <div class="fade-icon">💻</div>
+                <h3>Laptop</h3>
+                <p>MacBook, Dell, Asus, HP chính hãng</p>
+            </div>
+            <div class="fade-card" style="--delay: 0.2s">
+                <div class="fade-icon">⌚</div>
+                <h3>Đồng hồ</h3>
+                <p>Apple Watch, Galaxy Watch, Garmin</p>
+            </div>
+            <div class="fade-card" style="--delay: 0.3s">
+                <div class="fade-icon">🎧</div>
+                <h3>Tai nghe</h3>
+                <p>AirPods, Sony, Bose, JBL</p>
+            </div>
+            <div class="fade-card" style="--delay: 0.4s">
+                <div class="fade-icon">📷</div>
+                <h3>Camera</h3>
+                <p>Canon, Sony, Fujifilm, DJI Drone</p>
+            </div>
+            <div class="fade-card" style="--delay: 0.5s">
+                <div class="fade-icon">🖥️</div>
+                <h3>Màn hình</h3>
+                <p>LG, Samsung, Dell 4K UHD</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Xem lại effect 2 độc lập -->
+    <section class="demo-section">
+        <div class="section-label">Hiệu ứng 2 — Button Hover</div>
+        <h2 class="demo-title">Hover vào các nút bên dưới</h2>
+        <div class="button-demo-wrap">
+            <button class="btn-buy">Mua ngay</button>
+            <button class="btn-outline">Xem thêm</button>
+            <button class="btn-ghost">Yêu thích ♡</button>
+            <button class="btn-danger">Xóa</button>
+        </div>
+    </section>
+
+</body>
+</html>

@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Product Page — PBT05 B1</title>
+    <link rel="stylesheet" href="responsive.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- ===== HEADER ===== -->
+    <header class="header">
+        <div class="header-inner">
+            <div class="logo">
+                <span class="logo-mark">◈</span>
+                <span class="logo-text">ShopVN</span>
+            </div>
+
+            <!-- Desktop Navigation -->
+            <nav class="nav-desktop">
+                <a href="#">Trang chủ</a>
+                <a href="#">Sản phẩm</a>
+                <a href="#">Khuyến mãi</a>
+                <a href="#">Liên hệ</a>
+            </nav>
+
+            <div class="header-actions">
+                <button class="btn-search" aria-label="Tìm kiếm">🔍</button>
+                <button class="btn-cart" aria-label="Giỏ hàng">🛒 <span class="cart-count">3</span></button>
+                <!-- Hamburger menu (mobile only) -->
+                <button class="hamburger" id="hamburgerBtn" aria-label="Menu" aria-expanded="false">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Drawer -->
+        <nav class="nav-mobile" id="mobileNav" aria-hidden="true">
+            <a href="#">Trang chủ</a>
+            <a href="#">Sản phẩm</a>
+            <a href="#">Khuyến mãi</a>
+            <a href="#">Liên hệ</a>
+        </nav>
+    </header>
+
+    <!-- ===== MAIN LAYOUT ===== -->
+    <div class="page-layout">
+
+        <!-- SIDEBAR (hidden on mobile) -->
+        <aside class="sidebar">
+            <h2 class="sidebar-title">Bộ lọc</h2>
+
+            <div class="filter-group">
+                <h3 class="filter-label">Danh mục</h3>
+                <ul class="filter-list">
+                    <li><label><input type="checkbox" checked> Điện thoại</label></li>
+                    <li><label><input type="checkbox"> Laptop</label></li>
+                    <li><label><input type="checkbox"> Tablet</label></li>
+                    <li><label><input type="checkbox"> Phụ kiện</label></li>
+                    <li><label><input type="checkbox"> Đồng hồ</label></li>
+                </ul>
+            </div>
+
+            <div class="filter-group">
+                <h3 class="filter-label">Khoảng giá</h3>
+                <ul class="filter-list">
+                    <li><label><input type="radio" name="price" checked> Dưới 1 triệu</label></li>
+                    <li><label><input type="radio" name="price"> 1 – 5 triệu</label></li>
+                    <li><label><input type="radio" name="price"> 5 – 15 triệu</label></li>
+                    <li><label><input type="radio" name="price"> Trên 15 triệu</label></li>
+                </ul>
+            </div>
+
+            <div class="filter-group">
+                <h3 class="filter-label">Đánh giá</h3>
+                <ul class="filter-list">
+                    <li><label><input type="checkbox"> ★★★★★ (5 sao)</label></li>
+                    <li><label><input type="checkbox"> ★★★★☆ (4 sao+)</label></li>
+                    <li><label><input type="checkbox"> ★★★☆☆ (3 sao+)</label></li>
+                </ul>
+            </div>
+
+            <button class="btn-filter-apply">Áp dụng</button>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+
+            <!-- Tablet filter bar (visible only on tablet) -->
+            <div class="tablet-filter-bar">
+                <span>Bộ lọc:</span>
+                <select><option>Danh mục</option><option>Điện thoại</option><option>Laptop</option></select>
+                <select><option>Giá</option><option>Dưới 1tr</option><option>1–5tr</option></select>
+                <select><option>Đánh giá</option><option>5 sao</option><option>4 sao+</option></select>
+            </div>
+
+            <div class="content-header">
+                <h1 class="page-title">Sản phẩm nổi bật</h1>
+                <p class="product-count">Hiển thị 8 sản phẩm</p>
+            </div>
+
+            <!-- Product Grid -->
+            <div class="product-grid">
+
+                <article class="product-card">
+                    <div class="card-image-wrap">
+                        <img src="https://placehold.co/400x300/1a1a2e/c8a97e?text=iPhone+15" alt="iPhone 15 Pro" class="card-image">
+                        <span class="badge badge-sale">-15%</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-brand">Apple</p>
+                        <h3 class="card-title">iPhone 15 Pro Max 256GB</h3>
+                        <div class="card-rating">★★★★★ <span>(128)</span></div>
+                        <div class="card-price">
+                            <span class="price-current">28.990.000đ</span>
+                            <span class="price-old">33.990.000đ</span>
+                        </div>
+                        <button class="btn-buy">Mua ngay</button>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <div class="card-image-wrap">
+                        <img src="https://placehold.co/400x300/0f3460/e94560?text=Samsung+S24" alt="Samsung S24" class="card-image">
+                        <span class="badge badge-new">Mới</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-brand">Samsung</p>
+                        <h3 class="card-title">Samsung Galaxy S24 Ultra 512GB</h3>
+                        <div class="card-rating">★★★★☆ <span>(95)</span></div>
+                        <div class="card-price">
+                            <span class="price-current">31.490.000đ</span>
+                        </div>
+                        <button class="btn-buy">Mua ngay</button>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <div class="card-image-wrap">
+                        <img src="https://placehold.co/400x300/16213e/0f3460?text=MacBook+Air" alt="MacBook Air" class="card-image">
+                        <span class="badge badge-sale">-10%</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-brand">Apple</p>
+                        <h3 class="card-title">MacBook Air M3 13" 16GB/512GB</h3>
+                        <div class="card-rating">★★★★★ <span>(67)</span></div>
+                        <div class="card-price">
+                            <span class="price-current">32.990.000đ</span>
+                            <span class="price-old">36.500.000đ</span>
+                        </div>
+                        <button class="btn-buy">Mua ngay</button>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <div class="card-image-wrap">
+                        <img src="https://placehold.co/400x300/533483/e94560?text=iPad+Pro" alt="iPad Pro" class="card-image">
+                    </div>
+                    <div class="card-body">
+                        <p class="card-brand">Apple</p>
+                        <h3 class="card-title">iPad Pro M4 11" WiFi 256GB</h3>
+                        <div class="card-rating">★★★★★ <span>(41)</span></div>
+                        <div class="card-price">
+                            <span class="price-current">23.490.000đ</span>
+                        </div>
+                        <button class="btn-buy">Mua ngay</button>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <div class="card-image-wrap">
+                        <img src="https://placehold.co/400x300/1a1a2e/53d8fb?text=AirPods+Pro" alt="AirPods Pro" class="card-image">
+                        <span class="badge badge-sale">-20%</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-brand">Apple</p>
+                        <h3 class="card-title">AirPods Pro 2 USB-C</h3>
+                        <div class="card-rating">★★★★★ <span>(312)</span></div>
+                        <div class="card-price">
+                            <span class="price-current">5.590.000đ</span>
+                            <span class="price-old">6.990.000đ</span>
+                        </div>
+                        <button class="btn-buy">Mua ngay</button>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <div class="card-image-wrap">
+                        <img src="https://placehold.co/400x300/0f3460/53d8fb?text=Galaxy+Watch" alt="Galaxy Watch" class="card-image">
+                        <span class="badge badge-new">Mới</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-brand">Samsung</p>
+                        <h3 class="card-title">Galaxy Watch 7 44mm LTE</h3>
+                        <div class="card-rating">★★★★☆ <span>(78)</span></div>
+                        <div class="card-price">
+                            <span class="price-current">7.990.000đ</span>
+                        </div>
+                        <button class="btn-buy">Mua ngay</button>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <div class="card-image-wrap">
+                        <img src="https://placehold.co/400x300/16213e/c8a97e?text=Xiaomi+14T" alt="Xiaomi 14T" class="card-image">
+                        <span class="badge badge-sale">-25%</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-brand">Xiaomi</p>
+                        <h3 class="card-title">Xiaomi 14T Pro 512GB Titan</h3>
+                        <div class="card-rating">★★★★☆ <span>(55)</span></div>
+                        <div class="card-price">
+                            <span class="price-current">14.990.000đ</span>
+                            <span class="price-old">19.990.000đ</span>
+                        </div>
+                        <button class="btn-buy">Mua ngay</button>
+                    </div>
+                </article>
+
+                <article class="product-card">
+                    <div class="card-image-wrap">
+                        <img src="https://placehold.co/400x300/533483/c8a97e?text=Sony+WH-1000XM5" alt="Sony Headphones" class="card-image">
+                    </div>
+                    <div class="card-body">
+                        <p class="card-brand">Sony</p>
+                        <h3 class="card-title">Sony WH-1000XM5 Noise Cancelling</h3>
+                        <div class="card-rating">★★★★★ <span>(203)</span></div>
+                        <div class="card-price">
+                            <span class="price-current">8.490.000đ</span>
+                        </div>
+                        <button class="btn-buy">Mua ngay</button>
+                    </div>
+                </article>
+
+            </div><!-- /.product-grid -->
+        </main>
+
+        <!-- ADS SIDEBAR (desktop only) -->
+        <aside class="ads-bar">
+            <div class="ad-card">
+                <img src="https://placehold.co/200x300/e94560/fff?text=Flash+Sale" alt="Flash Sale" style="width:100%; border-radius:8px;">
+                <p>Flash Sale 11/11</p>
+            </div>
+            <div class="ad-card">
+                <img src="https://placehold.co/200x250/0f3460/fff?text=Mã+Giảm+Giá" alt="Voucher" style="width:100%; border-radius:8px; margin-top:16px;">
+                <p>Giảm thêm 500K</p>
+            </div>
+        </aside>
+
+    </div><!-- /.page-layout -->
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-col">
+                <h4>ShopVN</h4>
+                <p>Mua sắm thông minh, sống hiện đại. Cam kết hàng chính hãng 100%.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Sản phẩm</h4>
+                <ul>
+                    <li><a href="#">Điện thoại</a></li>
+                    <li><a href="#">Laptop</a></li>
+                    <li><a href="#">Tablet</a></li>
+                    <li><a href="#">Phụ kiện</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Hỗ trợ</h4>
+                <ul>
+                    <li><a href="#">Chính sách đổi trả</a></li>
+                    <li><a href="#">Bảo hành</a></li>
+                    <li><a href="#">Thanh toán</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Liên hệ</h4>
+                <p>📞 1800 1234</p>
+                <p>✉️ support@shopvn.com</p>
+                <p>🕐 8:00 – 22:00</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2025 ShopVN. Bảo lưu mọi quyền.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Hamburger menu toggle
+        const hamburger = document.getElementById('hamburgerBtn');
+        const mobileNav = document.getElementById('mobileNav');
+
+        hamburger.addEventListener('click', () => {
+            const isOpen = hamburger.classList.toggle('open');
+            mobileNav.classList.toggle('open');
+            hamburger.setAttribute('aria-expanded', isOpen);
+            mobileNav.setAttribute('aria-hidden', !isOpen);
+        });
+
+        // Close mobile nav when clicking a link
+        mobileNav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('open');
+                mobileNav.classList.remove('open');
+            });
+        });
+    </script>
+</body>
+</html>

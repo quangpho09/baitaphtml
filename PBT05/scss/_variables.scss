@@ -1,0 +1,76 @@
+// =====================================================
+// _variables.scss — PBT05 Bài B3
+// Tất cả biến SCSS tập trung tại đây
+// =====================================================
+
+// ===== COLORS =====
+$primary-color:    #c8a97e;
+$primary-dark:     #a8895e;
+$secondary-color:  #e94560;
+$accent-blue:      #53d8fb;
+$accent-green:     #22c55e;
+
+$bg-color:         #0d0d14;
+$surface-color:    #161622;
+$surface-2:        #1e1e2e;
+$border-color:     #2a2a3a;
+
+$text-color:       #e8e8f0;
+$text-muted:       #888899;
+$white:            #ffffff;
+
+// ===== TYPOGRAPHY =====
+$font-primary:     'Syne', sans-serif;
+$font-body:        'Inter', sans-serif;
+
+$font-size-xs:     11px;
+$font-size-sm:     13px;
+$font-size-base:   15px;
+$font-size-md:     18px;
+$font-size-lg:     24px;
+$font-size-xl:     32px;
+
+$font-weight-regular:  400;
+$font-weight-medium:   500;
+$font-weight-semibold: 600;
+$font-weight-bold:     700;
+$font-weight-black:    800;
+
+// ===== SPACING =====
+$spacing-xs:  4px;
+$spacing-sm:  8px;
+$spacing-md:  16px;
+$spacing-lg:  24px;
+$spacing-xl:  32px;
+$spacing-2xl: 48px;
+$spacing-3xl: 64px;
+
+// ===== BREAKPOINTS =====
+$breakpoint-sm:      576px;
+$breakpoint-tablet:  768px;
+$breakpoint-desktop: 1024px;
+$breakpoint-wide:    1280px;
+$breakpoint-xl:      1440px;
+
+// ===== BORDER RADIUS =====
+$radius-sm:  6px;
+$radius-md:  12px;
+$radius-lg:  20px;
+$radius-full: 9999px;
+
+// ===== SHADOWS =====
+$shadow-sm:  0 2px 8px rgba(0, 0, 0, 0.3);
+$shadow-md:  0 8px 24px rgba(0, 0, 0, 0.4);
+$shadow-lg:  0 20px 40px rgba(0, 0, 0, 0.5);
+$shadow-primary: 0 8px 32px rgba(200, 169, 126, 0.2);
+
+// ===== TRANSITIONS =====
+$transition-fast: all 0.2s ease;
+$transition:      all 0.3s ease;
+$transition-slow: all 0.5s ease;
+
+// ===== LAYOUT =====
+$header-height:  60px;
+$sidebar-width:  240px;
+$ads-width:      200px;
+$container-max:  1440px;

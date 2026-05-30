@@ -1,0 +1,250 @@
+// =====================================================
+// style.scss — PBT05 Bài B3: SCSS Main Entry Point
+// Import tất cả partials theo thứ tự đúng
+//
+// Compile command:
+//   sass scss/style.scss css/style.css
+//   sass --watch scss/style.scss:css/style.css
+// =====================================================
+
+// 1. Variables trước tiên (không có @use dependencies)
+@use 'variables' as *;
+
+// 2. Mixins (phụ thuộc vào variables)
+@use 'mixins' as *;
+
+// 3. Components (phụ thuộc vào variables + mixins)
+@use 'components';
+
+// =====================================================
+// GLOBAL STYLES — Reset & Base
+// =====================================================
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: $font-body;
+    background-color: $bg-color;
+    color: $text-color;
+    font-size: $font-size-base;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: $transition;
+}
+
+img {
+    // Ảnh responsive
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+ul { list-style: none; }
+
+// =====================================================
+// LAYOUT — Page Structure (Mobile-First)
+// =====================================================
+
+.page-layout {
+    display: block; // Mobile: stacked
+    max-width: $container-max;
+    margin: 0 auto;
+    padding: $spacing-md;
+
+    // Tablet
+    @include respond-to(tablet) {
+        padding: $spacing-lg;
+    }
+
+    // Desktop: 3-column grid
+    @include respond-to(desktop) {
+        display: grid;
+        grid-template-columns: $sidebar-width 1fr $ads-width;
+        gap: $spacing-xl;
+        padding: $spacing-xl;
+        align-items: start;
+    }
+
+    // Wide: larger sidebar
+    @include respond-to(wide) {
+        grid-template-columns: 260px 1fr 220px;
+    }
+}
+
+// =====================================================
+// MAIN CONTENT
+// =====================================================
+
+.main-content {
+    width: 100%;
+    min-width: 0; // Fix overflow in grid
+}
+
+.content-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    margin-bottom: $spacing-md;
+}
+
+.page-title {
+    font-family: $font-primary;
+    font-weight: $font-weight-bold;
+    color: $white;
+
+    // Mobile
+    font-size: 20px;
+
+    // Tablet+
+    @include respond-to(tablet) { font-size: $font-size-lg; }
+
+    // Desktop+
+    @include respond-to(desktop) { font-size: $font-size-xl; }
+}
+
+.product-count {
+    font-size: $font-size-xs;
+    color: $text-muted;
+
+    @include respond-to(tablet) { font-size: $font-size-sm; }
+}
+
+// =====================================================
+// PRODUCT GRID — Mobile-First
+// =====================================================
+
+.product-grid {
+    display: grid;
+    gap: $spacing-md;
+
+    // Mobile: 1 column
+    grid-template-columns: 1fr;
+
+    // Tablet: 2 columns
+    @include respond-to(tablet) {
+        grid-template-columns: repeat(2, 1fr);
+        gap: $spacing-lg;
+    }
+
+    // Desktop: 4 columns
+    @include respond-to(desktop) {
+        grid-template-columns: repeat(4, 1fr);
+        gap: $spacing-md;
+    }
+}
+
+// =====================================================
+// ADS BAR (Desktop only)
+// =====================================================
+
+.ads-bar {
+    display: none;
+
+    @include respond-to(desktop) {
+        display: block;
+        position: sticky;
+        top: calc(#{$header-height} + #{$spacing-md});
+    }
+
+    .ad-card {
+        text-align: center;
+
+        p {
+            font-size: $font-size-xs;
+            color: $text-muted;
+            margin-top: $spacing-xs;
+        }
+    }
+}
+
+// =====================================================
+// TABLET FILTER BAR
+// =====================================================
+
+.tablet-filter-bar {
+    display: none;
+
+    @include respond-to(tablet) {
+        display: flex;
+        align-items: center;
+        gap: $spacing-md;
+        padding: $spacing-sm $spacing-md;
+        background: $surface-color;
+        border-radius: $radius-md;
+        margin-bottom: $spacing-md;
+        font-size: $font-size-sm;
+        color: $text-muted;
+    }
+
+    @include respond-to(desktop) {
+        display: none;
+    }
+
+    select {
+        background: $surface-2;
+        border: 1px solid $border-color;
+        color: $text-color;
+        padding: 6px 12px;
+        border-radius: $radius-sm;
+        font-size: $font-size-sm;
+        cursor: pointer;
+    }
+}
+
+// =====================================================
+// UTILITY CLASSES
+// =====================================================
+
+.visually-hidden {
+    @include visually-hidden;
+}
+
+.text-primary { color: $primary-color; }
+.text-muted   { color: $text-muted; }
+.text-white   { color: $white; }
+.text-accent  { color: $secondary-color; }
+
+.flex-center { @include flex-center; }
+
+.btn-icon {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    padding: $spacing-xs;
+    color: $text-color;
+    position: relative;
+    transition: $transition;
+
+    &:hover { color: $primary-color; }
+}
+
+.cart-count {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    background: $secondary-color;
+    color: $white;
+    font-size: 10px;
+    width: 16px;
+    height: 16px;
+    border-radius: $radius-full;
+    @include flex-center;
+    font-weight: $font-weight-bold;
+}
