@@ -1,0 +1,18 @@
+
+.layout{
+display:grid;
+grid-template-columns:200px 1fr 200px;
+gap:20px;
+grid-template-areas:
+'header header header'
+'hero hero hero'
+'sidebar main ads'
+'footer footer footer';
+}
+header{grid-area:header;background:#333;color:#fff;padding:20px}
+.hero{grid-area:hero;background:#ddd;padding:40px}
+.sidebar{grid-area:sidebar;background:#eee;padding:20px}
+.main{grid-area:main;display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.ads{grid-area:ads;background:#eee;padding:20px}
+footer{grid-area:footer;background:#333;color:#fff;padding:20px}
+.pcard{border:1px solid #ccc;padding:30px}
