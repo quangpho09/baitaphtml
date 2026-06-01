@@ -1,0 +1,26 @@
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Node
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Video (optional, for large files)
+videos/*.mp4
+videos/*.webm
+
+# Environment
+.env
+.env.local

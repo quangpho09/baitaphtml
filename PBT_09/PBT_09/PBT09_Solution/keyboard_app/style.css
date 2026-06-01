@@ -1,0 +1,485 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary: #3498db;
+    --secondary: #2ecc71;
+    --dark: #2c3e50;
+    --light: #ecf0f1;
+    --border: #bdc3c7;
+    --shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    color: var(--dark);
+}
+
+#app {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Header */
+.header {
+    background: linear-gradient(135deg, var(--primary) 0%, #2980b9 100%);
+    color: white;
+    padding: 30px;
+    text-align: center;
+    box-shadow: var(--shadow);
+}
+
+.header h1 {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    opacity: 0.9;
+    font-size: 0.95em;
+}
+
+/* Main */
+main {
+    flex: 1;
+    padding: 40px;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+section {
+    background: white;
+    border-radius: 12px;
+    padding: 30px;
+    margin-bottom: 30px;
+    box-shadow: var(--shadow);
+}
+
+section h2 {
+    margin-bottom: 25px;
+    color: var(--dark);
+    font-size: 1.5em;
+}
+
+/* Gallery Section */
+.gallery-container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 30px;
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 12px;
+}
+
+.gallery-viewer {
+    flex: 1;
+    position: relative;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    border-radius: 8px;
+    background: #000;
+}
+
+.gallery-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+.gallery-controls {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    justify-content: space-between;
+}
+
+.control-btn {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.control-btn:hover {
+    background: #2980b9;
+}
+
+.control-btn:focus {
+    outline: 2px solid #fff;
+    outline-offset: 2px;
+}
+
+.slide-counter {
+    font-weight: 600;
+    font-size: 0.95em;
+}
+
+/* Navigation Buttons */
+.nav-btn {
+    width: 50px;
+    height: 50px;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 1.5em;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+.nav-btn:hover {
+    background: #2980b9;
+    transform: scale(1.1);
+}
+
+.nav-btn:focus {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+}
+
+/* Gallery Thumbnails */
+.gallery-thumbnails {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    gap: 10px;
+    list-style: none;
+}
+
+.thumbnail {
+    aspect-ratio: 4 / 3;
+    border-radius: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    border: 3px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.thumbnail:hover {
+    transform: scale(1.05);
+}
+
+.thumbnail.active {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 2px white, 0 0 0 4px var(--primary);
+}
+
+.thumbnail:focus {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+}
+
+/* Modal */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal.hidden {
+    display: none;
+}
+
+.modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.modal-content {
+    position: relative;
+    z-index: 1001;
+    max-width: 90vw;
+    max-height: 90vh;
+}
+
+.modal-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 1.5em;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 1;
+}
+
+.modal-close:hover {
+    background: #2980b9;
+}
+
+.modal-close:focus {
+    outline: 2px solid white;
+    outline-offset: 2px;
+}
+
+.modal-image {
+    width: 100%;
+    height: 100%;
+    max-width: 90vw;
+    max-height: 90vh;
+    object-fit: contain;
+}
+
+/* Shortcuts Section */
+.shortcuts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.shortcut-item {
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    border-left: 4px solid var(--primary);
+}
+
+.shortcut-keys {
+    background: var(--dark);
+    color: white;
+    padding: 10px;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-weight: 600;
+    margin-bottom: 10px;
+    display: inline-block;
+    font-size: 0.95em;
+}
+
+.shortcut-desc {
+    color: var(--dark);
+    font-weight: 500;
+}
+
+/* Command Palette */
+.command-palette {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2000;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 80px;
+}
+
+.command-palette.hidden {
+    display: none;
+}
+
+.palette-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.palette-content {
+    position: relative;
+    z-index: 2001;
+    background: white;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 600px;
+    max-height: 70vh;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+}
+
+.palette-input-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 15px 20px;
+    border-bottom: 1px solid var(--border);
+}
+
+.palette-icon {
+    font-size: 1.3em;
+    flex-shrink: 0;
+}
+
+.palette-input {
+    flex: 1;
+    border: none;
+    font-size: 1.1em;
+    padding: 8px 0;
+    outline: none;
+    font-family: inherit;
+}
+
+.command-list {
+    list-style: none;
+    overflow-y: auto;
+    max-height: 400px;
+    padding: 8px 0;
+}
+
+.command-item {
+    padding: 12px 20px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border-left: 4px solid transparent;
+}
+
+.command-item:hover {
+    background: var(--light);
+}
+
+.command-item.selected {
+    background: var(--primary);
+    color: white;
+    border-left-color: white;
+}
+
+.command-item:focus {
+    outline: 2px solid var(--primary);
+    outline-offset: -2px;
+}
+
+.command-name {
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.command-desc {
+    font-size: 0.85em;
+    opacity: 0.7;
+}
+
+.command-item.selected .command-desc {
+    opacity: 1;
+}
+
+.palette-hint {
+    background: var(--light);
+    padding: 12px 20px;
+    text-align: center;
+    color: #7f8c8d;
+    font-size: 0.85em;
+    border-top: 1px solid var(--border);
+}
+
+/* Focus Ring (Accessibility) */
+:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    main {
+        padding: 20px;
+    }
+
+    section {
+        padding: 20px;
+    }
+
+    .gallery-container {
+        flex-direction: column;
+    }
+
+    .gallery-viewer {
+        aspect-ratio: 16 / 9;
+        width: 100%;
+    }
+
+    .nav-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2em;
+    }
+
+    .gallery-thumbnails {
+        grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+    }
+
+    .shortcuts-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .palette-content {
+        width: 95%;
+        margin: 0 auto;
+    }
+}
+
+/* Utility classes */
+.hidden {
+    display: none !important;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--light);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary);
+}

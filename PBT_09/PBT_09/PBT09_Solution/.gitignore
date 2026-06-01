@@ -1,0 +1,33 @@
+# Dependencies
+node_modules/
+package-lock.json
+yarn.lock
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Environment
+.env
+.env.local
+
+# Build
+dist/
+build/
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Video files (nếu upload)
+*.mp4
+*.mov
+*.avi
+
+# Node
+npm-debug.log
+yarn-error.log

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌤️ Weather App</h1>
+            <p>Nhập tên thành phố để xem thời tiết</p>
+        </header>
+
+        <div class="search-box">
+            <input 
+                type="text" 
+                id="cityInput" 
+                placeholder="Ví dụ: Hanoi, Ho Chi Minh City..."
+                autocomplete="off"
+            >
+            <button id="searchBtn">Tìm</button>
+        </div>
+
+        <div class="content">
+            <!-- Loading state -->
+            <div id="loadingState" class="state hidden">
+                <div class="spinner"></div>
+                <p>⏳ Đang tải...</p>
+            </div>
+
+            <!-- Success state -->
+            <div id="successState" class="state hidden">
+                <div class="weather-card">
+                    <h2 id="cityName"></h2>
+                    <div class="weather-main">
+                        <div class="temperature">
+                            <span id="tempValue"></span>°C
+                        </div>
+                        <div class="weather-icon">
+                            <span id="weatherIcon"></span>
+                        </div>
+                    </div>
+                    <div class="weather-details">
+                        <p><strong>Mô tả:</strong> <span id="description"></span></p>
+                        <p><strong>Độ ẩm:</strong> <span id="humidity"></span>%</p>
+                        <p><strong>Gió:</strong> <span id="windSpeed"></span> km/h</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Error state -->
+            <div id="errorState" class="state hidden">
+                <div class="error-box">
+                    <p>❌ <span id="errorMessage"></span></p>
+                    <p class="error-tip">Hãy kiểm tra tên thành phố hoặc kết nối Internet</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Search history -->
+        <div class="history">
+            <h3>📋 Lịch sử tìm kiếm</h3>
+            <div id="historyList" class="history-list"></div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
